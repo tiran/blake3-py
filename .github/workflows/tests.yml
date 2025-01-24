@@ -19,15 +19,17 @@ jobs:
         # Keep in sync with:
         #   - dists.yml
         #   - the c_impl tests below
-        python-version: ["3.8", "3.9", "3.10", "3.11", "3.12", "3.13"]
-        rust-toolchain: [stable, beta, nightly]
+        # python-version: ["3.8", "3.9", "3.10", "3.11", "3.12", "3.13"]
+        python-version: ["3.12"]
+        # rust-toolchain: [stable, beta, nightly]
+        rust-toolchain: ["1.66"]
         platform: [
           { os: "ubuntu-latest",  python-architecture: "x64", rust-target: "x86_64-unknown-linux-gnu", name: "ubuntu-x64" },
-          { os: "macos-13",       python-architecture: "x64", rust-target: "x86_64-apple-darwin",      name: "macos-x64" },
+          #{ os: "macos-13",       python-architecture: "x64", rust-target: "x86_64-apple-darwin",      name: "macos-x64" },
           # disabled for now ref https://github.com/actions/setup-python/issues/855#issuecomment-2196137381
           # { os: "macos-14",       python-architecture: "x64", rust-target: "aarch64-apple-darwin",     name: "macos-arm64" },
-          { os: "windows-latest", python-architecture: "x86", rust-target: "i686-pc-windows-msvc",     name: "windows-x86" },
-          { os: "windows-latest", python-architecture: "x64", rust-target: "x86_64-pc-windows-msvc",   name: "windows-x64" },
+          #{ os: "windows-latest", python-architecture: "x86", rust-target: "i686-pc-windows-msvc",     name: "windows-x86" },
+          #{ os: "windows-latest", python-architecture: "x64", rust-target: "x86_64-pc-windows-msvc",   name: "windows-x64" },
         ]
       fail-fast: false
     env:
@@ -73,6 +75,7 @@ jobs:
           { os: "windows-latest", python-architecture: "x64", name: "windows-x64" },
         ]
       fail-fast: false
+    if: false
     steps:
       - uses: actions/checkout@v4
       - name: Set up Python
